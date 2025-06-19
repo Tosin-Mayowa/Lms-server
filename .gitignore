@@ -3,3 +3,4 @@ node_modules/
 # ignore environment files
 .env
 config.env
+server.js
