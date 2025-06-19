@@ -139,8 +139,6 @@ module.exports.login = async (req, res) => {
     }
 
     const userDoc = snapshot.docs[0];
-    
-    
     const userData = userDoc.data();
 
     const isMatch = await bcrypt.compare(password, userData.password);
@@ -148,31 +146,30 @@ module.exports.login = async (req, res) => {
       return res.status(400).json({ message: "Invalid credentials" });
     }
 
-    //  Update isActive field
+    // Update isActive field
     await db.collection("users").doc(userDoc.id).update({ isActive: true });
 
-    //  Generate JWT token
+    // Generate JWT token
     const token = generateToken(userDoc.id);
-console.log({token});
+    console.log({ token });
 
-    //  Set cookie options
+    // Set cookie options
     const options = {
       httpOnly: true,
       maxAge: 3600000, // 1 hour
     };
+
     if (process.env.NODE_ENV === 'production') {
       options.secure = true;
-      options.sameSite="None"
-       
+      options.sameSite = "None"; 
     }
 
-    //  Send cookie and response
+    // Send cookie and response
     res.cookie("jwt", token, options);
     res.status(200).json({
       token,
       status: "success",
       id: userDoc.id,
-
     });
 
   } catch (err) {
@@ -180,8 +177,6 @@ console.log({token});
     res.status(500).json({ message: "Login error" });
   }
 };
-
-
 
 // module.exports.createUser = async (req, res) => {
 //   try {
