@@ -162,7 +162,7 @@ console.log({token});
     };
     if (process.env.NODE_ENV === 'production') {
       options.secure = true;
-        options.sameSite="None"; 
+       
     }
 
     //  Send cookie and response
