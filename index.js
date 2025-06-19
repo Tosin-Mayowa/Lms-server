@@ -5,7 +5,7 @@ const cors = require('cors');
 const userAuthRouter=require('./Routes/authRouter')
 
 
-const allowedOrigins =process.env.NODE_ENV === 'production'?['http://localhost:3000',"https://lms-app-njr7.vercel.app"] : ['http://localhost:3000', 'http://localhost:5174'];
+const allowedOrigins =process.env.NODE_ENV === 'production'?['http://localhost:3000',"https://lms-app-njr7.vercel.app","https://lms-app-aq52.onrender.com"] : ['http://localhost:3000', 'http://localhost:5174'];
 
 const corsOptions = {
     origin: (origin, callback) => {
