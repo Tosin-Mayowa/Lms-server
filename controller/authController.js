@@ -167,8 +167,10 @@ console.log({token});
     //  Send cookie and response
     res.cookie("jwt", token, options);
     res.status(200).json({
+      token,
       status: "success",
       id: userDoc.id,
+
     });
 
   } catch (err) {
