@@ -2,8 +2,7 @@ const { db } =require("../firebase");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const crypto = require("crypto"); 
-const sendEmail = require("../utils/EmailSender");
-const sendSMS = require("../utils/smssend"); 
+
 
 
 const generateToken = (userId) => {
